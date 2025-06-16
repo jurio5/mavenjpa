@@ -24,10 +24,8 @@ public class persistenceContext {
             // 영속
             em.persist(member); // 이 때 영속성 컨텍스트(1차 캐시)에 영속화
 
-            Member findMember = em.find(Member.class, 1L);
-
-            System.out.println("findMember.getId() = " + findMember.getId());
-            System.out.println("findMember.getName() = " + findMember.getName());
+            Member findMember1 = em.find(Member.class, 1L);
+            Member findMember2 = em.find(Member.class, 1L);
 
             tx.commit();
         } catch (Exception e) {
