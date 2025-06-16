@@ -23,7 +23,7 @@ public class JpaMain {
 
             // 영속
             em.persist(member); // 이 때 영속성 컨텍스트(1차 캐시)에 영속화
-
+            em.detach(member); // 회원 엔티티를 준영속 상태로 분리
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
