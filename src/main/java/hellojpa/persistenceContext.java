@@ -27,6 +27,8 @@ public class persistenceContext {
             Member findMember1 = em.find(Member.class, 1L);
             Member findMember2 = em.find(Member.class, 1L);
 
+            System.out.println("(findMember1 == findMember2) = " + (findMember1 == findMember2));
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
