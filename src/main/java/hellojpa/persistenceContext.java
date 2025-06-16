@@ -17,17 +17,11 @@ public class persistenceContext {
         tx.begin();
 
         try {
-            // 비영속
-            Member member = new Member();
-            member.setName("HelloJpa");
+            Member member1 = new Member(1L, "A");
+            Member member2 = new Member(2L, "B");
 
-            // 영속
-            em.persist(member); // 이 때 영속성 컨텍스트(1차 캐시)에 영속화
-
-            Member findMember1 = em.find(Member.class, 1L);
-            Member findMember2 = em.find(Member.class, 1L);
-
-            System.out.println("(findMember1 == findMember2) = " + (findMember1 == findMember2));
+            em.persist(member1);
+            em.persist(member2);
 
             tx.commit();
         } catch (Exception e) {
