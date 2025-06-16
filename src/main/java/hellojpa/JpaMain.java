@@ -17,15 +17,8 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            Member findMember = em.find(Member.class, 1L);
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(10)
-                    .getResultList();
-
-            for (Member member : result) {
-                System.out.println("name = " + member.getName());
-            }
+            Member member = new Member();
+            member.setName("HelloJpa");
 
             tx.commit();
         } catch (Exception e) {
