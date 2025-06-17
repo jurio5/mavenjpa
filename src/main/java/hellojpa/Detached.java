@@ -17,10 +17,12 @@ public class Detached {
         tx.begin();
 
         try {
-            Member member = new Member(2L, "member200");
-            member.setName("AAAAA");
+            Member member1 = em.find(Member.class, 1L);
 
-            em.detach(member);
+            em.clear();
+
+            // 영속성 컨텍스트를 초기화 후 find 를 통해 다시 영속화 하기에 SQL 조회가 발생
+            Member member2 = em.find(Member.class, 1L);
 
             System.out.println("=========)");
 
